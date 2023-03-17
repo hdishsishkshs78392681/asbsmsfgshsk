@@ -31,7 +31,8 @@ bot.command('mirror',async (ctx)=>{
         })
         d.on('end',aa=>{
           const fname = aa.fileName;
-          bot.telegram.sendDocument(ctx.chat.id,{source:'./'+tk+'/'+fname},{caption:`Requested By:@${ctx.from.username}\n\n\nTG Mirror Bot:@tgmirror0bot`}).then(x=>{
+          const ff = fs.readFileSync('./'+tk'/'+fname)
+          bot.telegram.sendDocument(ctx.chat.id,ff,{caption:`Requested By:@${ctx.from.username}\n\n\nTG Mirror Bot:@tgmirror0bot`}).then(x=>{
           bot.telegram.deleteMessage(ctx.chat.id,mid)
         })
         })
